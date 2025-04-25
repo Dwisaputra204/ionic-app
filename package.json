@@ -1,5 +1,5 @@
 {
-  "name": "photo-gallery-capacitor-react",
+  "name": "cycle-counter-react",
   "private": true,
   "version": "4.0.0",
   "type": "module",
@@ -50,5 +50,5 @@
     "vite": "^4.3.9",
     "vitest": "^0.32.2"
   },
-  "description": "Build a photo gallery app that runs on iOS, Android, and the web - with just one codebase."
+  "description": "Cycle Counter React"
 }

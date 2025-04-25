@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-    <string>photo-gallery-capacitor-react</string>
+    <string>cycle-counter-react</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
     <key>NSCameraUsageDescription</key>
-    <string>To Take Photos and Video</string>
+    <string>cycle counter</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Store camera photos to camera</string>
     <key>NSPhotoLibraryUsageDescription</key>
