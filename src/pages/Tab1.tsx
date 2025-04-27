@@ -1,4 +1,5 @@
 import {
+  IonSpinner,
   IonChip,
   IonCard,
   IonContent,
@@ -142,7 +143,21 @@ const Tab1: React.FC = () => {
                       placeholder="0"
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4" className="ion-text-end">
+                  <IonCol size="2">
+                    {/* Conditionally render the spinner */}
+                    {stopwatchStates[label].isRunning && (
+                      <IonSpinner
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                        }}
+                        name="crescent"
+                      ></IonSpinner>
+                    )}
+                  </IonCol>
+                  <IonCol size="2" className="ion-text-end">
                     <IonButton
                       onClick={() => toggleStopwatch(label)}
                       disabled={stopwatchStates[label].isRunning} // Tambahkan properti disabled di sini
