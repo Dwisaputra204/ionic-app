@@ -1,7 +1,7 @@
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "io.ionic.demo.pg.react",
+  appId: "com.dwisaputra.cyclecounter",
   appName: "Cycle Counter",
   webDir: "dist",
   server: {
