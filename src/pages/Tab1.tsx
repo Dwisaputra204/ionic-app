@@ -1,4 +1,6 @@
 import {
+  IonChip,
+  IonCard,
   IonContent,
   IonHeader,
   IonButton,
@@ -26,9 +28,9 @@ interface StopwatchState {
 const Tab1: React.FC = () => {
   const initialStopwatchStates: { [key: string]: StopwatchState } = {
     "Digging Time": { isRunning: false, seconds: 0, intervalId: null },
-    "Swing-Time Loaded": { isRunning: false, seconds: 0, intervalId: null },
-    "Bucket-Dump Time": { isRunning: false, seconds: 0, intervalId: null },
-    "Swing-Time Empty": { isRunning: false, seconds: 0, intervalId: null },
+    "Swing Load Time": { isRunning: false, seconds: 0, intervalId: null },
+    "Dumping Time": { isRunning: false, seconds: 0, intervalId: null },
+    "Swing Unloaded Time": { isRunning: false, seconds: 0, intervalId: null },
   };
 
   const [stopwatchStates, setStopwatchStates] = useState(
@@ -114,50 +116,64 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Cycle Counter</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <IonGrid>
+          <IonRow>
+            <IonCol size="12" className="ion-text-center">
+              <IonChip color="primary">
+                <IonLabel>Loader</IonLabel>
+              </IonChip>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
 
         {Object.keys(stopwatchStates).map((label) => (
-          <IonItem key={label} lines="none">
-            <IonGrid>
-              <IonRow style={{ alignItems: "center" }}>
-                <IonCol size="8">
-                  <IonLabel position="stacked">{label}</IonLabel>
-                  <IonInput
-                    value={stopwatchStates[label].seconds}
-                    readonly
-                    placeholder="0"
-                  ></IonInput>
-                </IonCol>
-                <IonCol size="4" className="ion-text-end">
-                  <IonButton
-                    shape="round"
-                    onClick={() => toggleStopwatch(label)}
-                  >
-                    <IonIcon
-                      slot="icon-only"
-                      icon={stopwatchStates[label].isRunning ? undefined : time}
-                    ></IonIcon>
-                  </IonButton>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonItem>
+          <IonCard>
+            <IonItem key={label} lines="none">
+              <IonGrid>
+                <IonRow style={{ alignItems: "center" }}>
+                  <IonCol size="8">
+                    <IonLabel style={{ fontSize: "16px" }} position="stacked">
+                      {label}
+                    </IonLabel>
+                    <IonInput
+                      style={{ fontWeight: "bold" }}
+                      value={stopwatchStates[label].seconds}
+                      readonly
+                      placeholder="0"
+                    ></IonInput>
+                  </IonCol>
+                  <IonCol size="4" className="ion-text-end">
+                    <IonButton
+                      onClick={() => toggleStopwatch(label)}
+                      disabled={stopwatchStates[label].isRunning} // Tambahkan properti disabled di sini
+                    >
+                      <IonIcon
+                        slot="icon-only"
+                        icon={
+                          stopwatchStates[label].isRunning ? undefined : time
+                        }
+                      ></IonIcon>
+                    </IonButton>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
+            </IonItem>
+          </IonCard>
         ))}
-        <IonItem lines="none">
-          <IonGrid>
-            <IonRow style={{ alignItems: "center" }}>
-              <IonCol size="12">
-                <IonButton
-                  expand="block"
-                  color="danger"
-                  onClick={stopAllStopwatches}
-                >
-                  <IonIcon slot="start" icon={stop}></IonIcon>
-                  Stop
-                </IonButton>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
-        </IonItem>
+        <IonGrid>
+          <IonRow style={{ alignItems: "center" }}>
+            <IonCol size="12">
+              <IonButton
+                expand="block"
+                color="danger"
+                onClick={stopAllStopwatches}
+              >
+                <IonIcon slot="start" icon={stop}></IonIcon>
+                Stop
+              </IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );
