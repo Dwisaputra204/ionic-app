@@ -28,7 +28,12 @@ interface StopwatchState {
 
 const Tab2: React.FC = () => {
   const initialStopwatchStates: { [key: string]: StopwatchState } = {
-    "Hauling Time": { isRunning: false, seconds: 0, intervalId: null },
+    "Hauling Time": {
+      isRunning: false,
+      seconds: 0,
+      intervalId: null,
+    },
+    "Spotting Time": { isRunning: false, seconds: 0, intervalId: null },
   };
 
   const [stopwatchStates, setStopwatchStates] = useState(
