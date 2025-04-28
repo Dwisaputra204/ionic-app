@@ -1,6 +1,5 @@
 import {
   IonSpinner,
-  IonChip,
   IonCard,
   IonContent,
   IonHeader,
@@ -202,15 +201,10 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <IonGrid>
-          <IonRow>
-            <IonCol size="12" className="ion-text-center">
-              <IonChip color="primary">
-                <IonLabel>Loader</IonLabel>
-              </IonChip>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <IonItem>
+          <IonInput label="Loader"></IonInput>
+          <IonInput label="Hauler"></IonInput>
+        </IonItem>
 
         {Object.keys(stopwatchLoaderStates).map((label) => (
           <IonCard key={label}>
@@ -262,30 +256,21 @@ const Tab1: React.FC = () => {
           </IonCard>
         ))}
 
-        <IonGrid>
-          <IonRow style={{ alignItems: "center" }}>
-            <IonCol size="12">
-              <IonButton
-                expand="block"
-                color="danger"
-                onClick={stopAllStopwatchesLoader}
-              >
-                <IonIcon slot="start" icon={stop}></IonIcon>
-                Stop
-              </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-
-        <IonGrid>
-          <IonRow>
-            <IonCol size="12" className="ion-text-center">
-              <IonChip color="primary">
-                <IonLabel>Hauler</IonLabel>
-              </IonChip>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <IonRow style={{ alignItems: "center" }}>
+          <IonCol size="12">
+            <IonButton
+              expand="block"
+              color="danger"
+              onClick={stopAllStopwatchesLoader}
+              disabled={
+                !Object.values(stopwatchLoaderStates).some((s) => s.isRunning)
+              }
+            >
+              <IonIcon slot="start" icon={stop}></IonIcon>
+              Stop
+            </IonButton>
+          </IonCol>
+        </IonRow>
 
         {Object.keys(stopwatchHaulerStates).map((label) => (
           <IonCard key={label}>
@@ -337,20 +322,21 @@ const Tab1: React.FC = () => {
           </IonCard>
         ))}
 
-        <IonGrid>
-          <IonRow style={{ alignItems: "center" }}>
-            <IonCol size="12">
-              <IonButton
-                expand="block"
-                color="danger"
-                onClick={stopAllStopwatchesHauler}
-              >
-                <IonIcon slot="start" icon={stop}></IonIcon>
-                Stop
-              </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <IonRow style={{ alignItems: "center" }}>
+          <IonCol size="12">
+            <IonButton
+              expand="block"
+              color="danger"
+              onClick={stopAllStopwatchesHauler}
+              disabled={
+                !Object.values(stopwatchHaulerStates).some((s) => s.isRunning)
+              }
+            >
+              <IonIcon slot="start" icon={stop}></IonIcon>
+              Stop
+            </IonButton>
+          </IonCol>
+        </IonRow>
       </IonContent>
     </IonPage>
   );
